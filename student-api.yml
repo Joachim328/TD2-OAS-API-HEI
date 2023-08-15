@@ -1,0 +1,60 @@
+openapi: 3.0.0
+info:
+  title: Student API
+  version: "1.2"
+paths:
+  /student:
+    get:
+      description: Get a student
+      responses:
+        "200":
+          description: Student not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/student"
+    post:
+      operationId: createNewStudent
+      description: Create a new student
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                name:
+                  type: string
+                  default: Joachim
+                birthdate:
+                  type: string
+                  default: "21/01/2006"
+
+      responses:
+        "201":
+          description: Student created succesfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/student"
+        "400":
+          description: Bad request
+
+          
+components:
+  schemas:
+    student:
+      type: object
+      properties:
+        id:
+          type: integer
+          default: 1
+        name:
+          type: string
+          default: Joachim
+        birthdate:
+          type: string
+          default: "21/01/2006"
