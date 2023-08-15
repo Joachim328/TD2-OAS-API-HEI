@@ -1,0 +1,68 @@
+openapi: 3.0.0
+info:
+  title: Student API
+  version: "1.2"
+servers:
+- url: /
+paths:
+  /student:
+    get:
+      description: Get a student
+      operationId: studentGET
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/student'
+          description: Student not found
+      x-eov-operation-handler: controllers/DefaultController
+    post:
+      description: Create a new student
+      operationId: createNewStudent
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createNewStudent_request'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/student'
+          description: Student created succesfully
+        "400":
+          description: Bad request
+      x-eov-operation-handler: controllers/DefaultController
+components:
+  schemas:
+    student:
+      example:
+        birthdate: 21/01/2006
+        name: Joachim
+        id: 0
+      properties:
+        id:
+          default: 1
+          type: integer
+        name:
+          default: Joachim
+          type: string
+        birthdate:
+          default: 21/01/2006
+          type: string
+      type: object
+    createNewStudent_request:
+      properties:
+        id:
+          default: 1
+          type: integer
+        name:
+          default: Joachim
+          type: string
+        birthdate:
+          default: 21/01/2006
+          type: string
+      type: object
