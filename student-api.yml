@@ -148,3 +148,5 @@ components:
           type: string
         name:
           type: string
+        duration:
+          type: string
