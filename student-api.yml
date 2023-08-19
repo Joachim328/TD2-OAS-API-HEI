@@ -103,16 +103,7 @@ paths:
         "200":
           description: Teacher created successfully
 
-    put:
-      description: Update teacher
-      responses:
-        "204":
-          description: Teacher successfully updated
-    delete:
-      description: Delete Teacher
-      responses:
-        "204":
-          description: Teacher deleted successfully
+    
 
 components:
   schemas:
