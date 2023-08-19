@@ -5,6 +5,9 @@ info:
 paths:
   /student:
     get:
+      tags:
+        - L1
+        - L2
       description: Get a student
       responses:
         "200":
@@ -15,6 +18,9 @@ paths:
                 $ref: "#/components/schemas/student"
     post:
       operationId: createNewStudent
+      tags:
+        - L1
+        - L2
       description: Create a new student
       requestBody:
         required: true
@@ -43,7 +49,71 @@ paths:
         "400":
           description: Bad request
 
-          
+    put:
+      description: Update Student
+      tags:
+        - L1
+        - L2
+      responses:
+        "204":
+          description: Student successfully updated
+
+    delete:
+      description: Delete Student
+      tags:
+        - L1
+        - L2
+      responses:
+        "204":
+          description: Student deleted successfully
+
+  /teacher:
+    get:
+      description: Get a teacher
+      responses:
+        "200":
+          description: Teacher found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/teacher"
+        "400":
+          description: Teacher not found
+
+    post:
+      operationId: createNewTeacher
+      description: Create a new teacher
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                firstname:
+                  type: string
+                lastname:
+                  type: string
+                subject:
+                  $ref: "#/components/schemas/subject"
+      responses:
+        "200":
+          description: Teacher created successfully
+
+    put:
+      description: Update teacher
+      responses:
+        "204":
+          description: Teacher successfully updated
+    delete:
+      description: Delete Teacher
+      responses:
+        "204":
+          description: Teacher deleted successfully
+
 components:
   schemas:
     student:
@@ -58,3 +128,23 @@ components:
         birthdate:
           type: string
           default: "21/01/2006"
+
+    teacher:
+      type: object
+      properties:
+        id:
+          type: integer
+          default: 1
+        firstname:
+          type: string
+        lastname:
+          type: string
+        subject:
+          $ref: "#/components/schemas/subject"
+    subject:
+      type: object
+      properties:
+        code:
+          type: string
+        name:
+          type: string
