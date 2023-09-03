@@ -1,5 +1,4 @@
-# Projet1P3-API
-
+# TD2-OAS-API-HEI
 
 Ce projet est une API qui permet de gérer des informations sur les étudiants et les enseignants.
 
